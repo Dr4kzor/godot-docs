@@ -123,6 +123,14 @@ need to be created:
     These files must be in the top-level folder of your module (next to your
     ``SCsub`` and ``config.py`` files) for the module to be registered properly.
 
+.. important::
+    When passing arguments into a module method pass them as "Object * ptr"
+    format, then convert this pointer to the desired Type by using "cast_to<Type>(ptr)"
+    example:
+    
+    void Player::set_camera(Object* p_camera)
+    { camera = p_camera ? cast_to<Camera>(p_camera) : nullptr; }
+
 These files should contain the following:
 
 .. code-block:: cpp
